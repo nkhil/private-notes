@@ -1,0 +1,57 @@
+{
+  "name": "private-notes",
+  "version": "1.0.0",
+  "description": "GraphQL api for a notes backend",
+  "main": "build/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "clean": "rimraf build",
+    "firebase-emulator": "./scripts/firebase.sh",
+    "build:schema": "ts-node src/scripts/create-schema",
+    "build:test": "npm run build:schema && graphql-codegen --config ./src/test/codegen.yml",
+    "test": "ava",
+    "build": "npm run clean && npm run build:test && tsc",
+    "dev": "node -r @swc-node/register src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkhil/private-notes.git"
+  },
+  "author": "Nikhil Vijayan <nkhilv@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nkhil/private-notes/issues"
+  },
+  "homepage": "https://github.com/nkhil/private-notes#readme",
+  "dependencies": {
+    "@envelop/core": "^2.0.0",
+    "@faker-js/faker": "^7.3.0",
+    "@google-cloud/firestore": "^6.0.0",
+    "@graphql-yoga/node": "^2.11.2",
+    "@pothos/core": "^3.12.1",
+    "fastify": "^4.2.0",
+    "graphql": "^15.8.0",
+    "graphql-helix": "^1.13.0",
+    "uuid": "^8.3.2"
+  },
+  "volta": {
+    "node": "16.15.0",
+    "npm": "8.9.0"
+  },
+  "devDependencies": {
+    "@ava/get-port": "^2.0.0",
+    "@ava/typescript": "^3.0.1",
+    "@graphql-codegen/cli": "^2.9.0",
+    "@graphql-codegen/typescript": "^2.7.2",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.2",
+    "@graphql-codegen/typescript-operations": "^2.5.2",
+    "@swc-node/register": "^1.5.1",
+    "@types/node": "^18.0.3",
+    "@types/uuid": "^8.3.4",
+    "ava": "^4.3.1",
+    "graphql-codegen": "^0.4.0",
+    "graphql-request": "^4.3.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1"
+  }
+}
